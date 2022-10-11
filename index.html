@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Regnvejr</title>
+
+    <style>
+      @font-face {
+        font-family: Open Sans;
+        src: url(OpenSans-SemiBold.ttf);
+        display: block;
+      }
+
+      main {
+        width: 100%;
+        height: 100%;
+        background: rgb(1, 206, 252);
+        background: linear-gradient(
+          0deg,
+          rgba(1, 206, 252, 1) 35%,
+          rgba(103, 209, 255, 1) 100%
+        );
+        transition: background 1s ease-out;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 38px;
+        font-family: Open Sans;
+        color: white;
+        line-height: 1;
+      }
+
+      main.raining {
+        background: rgb(2, 121, 148);
+        background: linear-gradient(
+          180deg,
+          rgba(2, 121, 148, 1) 35%,
+          rgba(76, 154, 189, 1) 100%
+        );
+      }
+
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main onclick="toggle()" id="toggle"></main>
+
+    <script defer>
+      const audio = new Audio("regnvejr.mp3");
+      audio.loop = true;
+      audio.pause();
+
+      function toggle() {
+        const container = document.getElementById("toggle");
+        if (audio.paused) {
+          audio.play();
+          container.innerText = "enjoy the rain";
+          container.classList.add("raining");
+        } else {
+          audio.pause();
+          container.innerText = "it cleared up!";
+          container.classList.remove("raining");
+        }
+      }
+    </script>
+  </body>
+</html>
