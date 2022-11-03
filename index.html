@@ -7,68 +7,37 @@
     <title>Regnvejr</title>
 
     <style>
-      main {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-
       #toggle {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: contain;
-
-        width: 5rem;
-        height: 5rem;
-
-        background-color: transparent;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
         border: 0;
+        margin: 0 auto;
+        padding: 4px 12px;
+        height: 32px;
+        outline: none;
+        user-select: none;
+        white-space: nowrap;
 
-        cursor: pointer;
-
-        transition: transform 0.5s ease-out;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Inter, Ubuntu, sans-serif;
+        font-size: 13px;
+        border-radius: 5px;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12),
+          0 2px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 1.5px 0 rgba(0, 0, 0, 0.03),
+          0 1px 2px 0 rgba(0, 0, 0, 0.04), 0 0 0 0 transparent;
+        background-color: #fff;
+        cursor: default;
       }
 
       #toggle:hover {
-        transform: scale3d(1.03, 1.03, 1.03);
-      }
-
-      #toggle.play {
-        background-image: url(play-circle.svg);
-      }
-
-      #toggle.pause {
-        background-image: url(pause-circle.svg);
-      }
-
-      html,
-      body {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        margin: 0;
-
-        font-size: 16px;
+        background-color: #eef0f4;
       }
     </style>
   </head>
   <body>
-    <main>
-      <span
-        style="display: none; background-image: url(play-circle.svg)"
-      ></span>
-      <span
-        style="display: none; background-image: url(pause-circle.svg)"
-      ></span>
-      <button
-        onclick="toggle()"
-        type="button"
-        id="toggle"
-        class="play"
-      ></button>
-    </main>
+    <button onclick="toggle()" type="button" id="toggle">Play</button>
 
     <script defer>
       const audio = new Audio("regnvejr.mp3");
@@ -79,10 +48,10 @@
         const btn = document.getElementById("toggle");
         if (audio.paused) {
           audio.play();
-          btn.className = "pause";
+          btn.innerText = "Pause";
         } else {
           audio.pause();
-          btn.className = "play";
+          btn.innerText = "Play";
         }
       }
     </script>
